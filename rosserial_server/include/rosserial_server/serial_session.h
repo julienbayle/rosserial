@@ -71,6 +71,9 @@ private:
     {
       timer_.expires_from_now(boost::posix_time::milliseconds(2000));
       timer_.async_wait(boost::bind(&SerialSession::check_connection, this));
+    } else if (is_active()) {
+      // Stop session and close socket cleanly before leaving
+      stop();
     }
   }
 
