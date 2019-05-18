@@ -123,13 +123,6 @@ public:
     sync_timer_.cancel();
     require_check_timer_.cancel();
 
-    // Reset the state of the session, dropping any publishers or subscribers
-    // we currently know about from this client.
-    callbacks_.clear();
-    subscribers_.clear();
-    publishers_.clear();
-    services_.clear();
-
     // Close the socket.
     socket_.close();
     active_ = false;
